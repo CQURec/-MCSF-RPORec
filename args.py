@@ -4,7 +4,7 @@ import argparse
 def get_args():
     parser = argparse.ArgumentParser(description='MCSF-RPORec main.py')
     # dataset params
-    parser.add_argument('--dataset', type=str, default="Epinions", help="Epinions, Yelp")
+    parser.add_argument('--dataset', type=str, default="Yelp", help="Epinions, Yelp")
     parser.add_argument('--seed', type=int, default=29)
 
     parser.add_argument('--hide_dim', type=int, default=32)

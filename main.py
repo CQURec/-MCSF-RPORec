@@ -28,7 +28,7 @@ import evaluate
 import time
 import networkx as nx
 
-device_gpu = t.device("cuda:2")
+device_gpu = t.device("cuda")
 modelUTCStr = str(int(time.time()))[4:]
 
 isLoadModel = False
@@ -444,8 +444,8 @@ class Model():
                 epoch_ii_dgi_loss += ii_dgi_loss.item()
             ssl_loss = self.args.ssl_alpha * ssl_uu_loss + (1 - self.args.ssl_alpha) * ssl_ii_loss
 
-            loss = loss + self.args.ssl_beta * ssl_loss
-            # loss = loss + self.args.lam[0] * uu_dgi_loss + self.args.lam[1] * ii_dgi_loss + self.args.ssl_beta * ssl_loss
+            # loss = loss + self.args.ssl_beta * ssl_loss  # good
+            loss = loss + self.args.lam[0] * uu_dgi_loss + self.args.lam[1] * ii_dgi_loss + self.args.ssl_beta * ssl_loss
             # loss = loss + self.args.lam[0] * uu_dgi_loss + self.args.lam[1] * ii_dgi_loss
 
 
